@@ -5,18 +5,21 @@ import Cartas from "../Cartas/Cartas";
 import { useNavigate, useParams } from 'react-router-dom';
 import VITE_BACKEND_URL from "../../config";
 
-function Recursos({ onTotemSelect, resetSelection, runas, cartaConfigs, bando, isUserTurn }) {
+function Recursos({ onTotemSelect, resetSelection, runas, cartaConfigs, bando, isUserTurn, usuarioId1, usuarioId2 }) {
   const [recursos, setRecursos] = useState(0);
   const navigate = useNavigate();
   const { partidaId } = useParams(); 
+  const usuarioId = parseInt(localStorage.getItem('userId'));
 
   useEffect(() => {
-    if (bando === 'Defensores de la Luz') {
+    if (usuarioId === usuarioId1) {
       setRecursos(runas.runas_usuario_1);
-    } else {
+    } else if (usuarioId === usuarioId2) {
       setRecursos(runas.runas_usuario_2);
     }
-  }, [runas, bando]);
+  }, [runas, bando, usuarioId, usuarioId1, usuarioId2]);
+
+
 
   const handleSiguienteTurno = () => {
     if (!isUserTurn) {
@@ -29,17 +32,29 @@ function Recursos({ onTotemSelect, resetSelection, runas, cartaConfigs, bando, i
       return;
     }
 
-    console.log("Siguiente turno");
-    console.log("Usuario ID:", usuarioId);
-    console.log("Partida ID:", partidaId);
     axios.post(`${VITE_BACKEND_URL}/gameplay/next-turn`, { usuarioId, partidaId }) 
       .then((response) => {
-        console.log('Turno actualizado', response.data);
+        if (response.data.estado === 'sombra_gano' ) {
+          if (bando === 'Defensores de la Luz') {
+            navigate('/defeat');
+          } else {
+            navigate('/victory');
+          }
+        } else if (response.data.estado === 'luz_gano') {
+          if (bando === 'Defensores de la Luz') {
+            navigate('/victory');
+          } else {
+            navigate('/defeat');
+          }
+        } else {
+          window.location.reload();
+        }
       })
       .catch((error) => {
         console.error('Error al actualizar el turno:', error);
       });
-  };
+  }
+  
 
   return (
     <div className={styles.container}>

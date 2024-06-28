@@ -9,8 +9,6 @@ function Cartas({ onTotemSelect, resetSelection, cartaConfigs, bando, isUserTurn
     if (!isUserTurn) {
       return; // No hacer nada si no es el turno del usuario
     }
-    console.log(`Carta ${id} clickeada`);
-    console.log('Bando:', bando);
     setLastClickedId(id);
     onTotemSelect({ id });
   };

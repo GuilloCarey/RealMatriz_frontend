@@ -24,13 +24,12 @@ function ComenzarBatalla() {
 
         axios.get(`${VITE_BACKEND_URL}/gameplay/data`)
             .then((response) => {
-                console.log('Partidas en curso:', response.data);
                 const userPartidas = response.data.filter(partida => partida.usuario_id_1 === usuarioIdNumber || partida.usuario_id_2 === usuarioIdNumber);
                 setPartidas(userPartidas);
                 setPartidasPendientes(response.data.filter(
                     partida => partida.estado === 'pendiente' && partida.usuario_id_1 !== usuarioIdNumber && partida.usuario_id_2 !== usuarioIdNumber
                 ));
-                const activePartida = userPartidas.find(partida => partida.estado !== 'finalizado');
+                const activePartida = userPartidas.find(partida => partida.estado === 'en curso');
                 setPartidaActiva(activePartida);
             })
             .catch((error) => {

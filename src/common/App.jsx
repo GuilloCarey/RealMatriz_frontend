@@ -26,6 +26,12 @@ function App() {
             <button className="optionButton" onClick={() => navigate('/acerca-juego')}>
               Acerca del Juego
             </button>
+            <button className="optionButton" onClick={() => navigate('/perfil')}>
+              Perfil
+            </button>
+            <button className="optionButton" onClick={() => navigate('/sobre_nosotros')}>
+              Sobre Nosotros
+            </button>
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@
   grid-template-rows: repeat(10, 1fr); 
   gap: 5px; 
   padding: 0px;
-  background-image: url('../../assets/Pasto_tablero.png'); /* Ruta imagen */
+  background-image: url('/assets/Pasto_tablero.png'); /* Ruta imagen */
   background-size: 100% 100%; 
   background-repeat: no-repeat;
   background-position: top left; 

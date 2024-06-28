@@ -1,35 +1,35 @@
 import React from 'react';
 import './NavBar.css';
-//import img1 from '../../../public/assets/Logo.png';
 import { useNavigate } from 'react-router-dom';
 const img1 = '/assets/Logo.png';
-
 
 function NavBar() {
   const navigate = useNavigate();
 
-  const handleNavigation = (e) => {
-    navigate(e.target.value);
+  const handleNavigation = (path) => {
+    navigate(path);
   };
 
   return (
     <div className="navbar">
-      <div className="navbar-logo">
+      <div className="navbar-logo" onClick={() => handleNavigation('/')}>
         <img src={img1} alt="Logo" />
       </div>
       <div className="navbar-title">
         DCCombate Místico
       </div>
-      <div className="navbar-menu">
-        <select onChange={handleNavigation}>
-          <option value="/"></option>
-          <option value="/ranking">Ranking</option>
-          <option value="/historial">Historial</option>
-          <option value="/acerca-juego">Acerca del Juego</option>
-          <option value="/comenzarBatalla">Comenzar Batalla</option>
-          <option value="/perfil">Perfil</option>
-          <option value="/">Menú</option>
-        </select>
+      <div className="navbar-buttons">
+        <div className="dropdown">
+          <button className="dropbtn">|||</button>
+          <div className="dropdown-content">
+            <a onClick={() => handleNavigation('/comenzarBatalla')}>Comenzar Batalla</a>
+            <a onClick={() => handleNavigation('/ranking')}>Ranking</a>
+            <a onClick={() => handleNavigation('/historial')}>Historial</a>
+            <a onClick={() => handleNavigation('/acerca-juego')}>Acerca del Juego</a>
+            <a onClick={() => handleNavigation('/perfil')}>Perfil</a>
+            <a onClick={() => handleNavigation('/sobre_nosotros')}>Sobre Nosotros</a>
+          </div>
+        </div>
       </div>
     </div>
   );

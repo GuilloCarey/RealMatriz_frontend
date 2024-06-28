@@ -15,7 +15,6 @@ function NuevaPartida() {
   useEffect(() => {
     // Recuperar el ID del usuario del almacenamiento local
     const storedUserId = localStorage.getItem('userId');
-    console.log("storedUserId", storedUserId);
     if (storedUserId) {
       setUserId(storedUserId);
     } else {
@@ -24,7 +23,6 @@ function NuevaPartida() {
   }, []);
 
   const handleSelectChange = (e) => {
-    console.log("Equipo seleccionado:", e.target.value);
     setEquipo(e.target.value);
   };
 
@@ -46,15 +44,11 @@ function NuevaPartida() {
     }
 
     try {
-      console.log('Creando partida...');
-      console.log('equipo:', equipo);
-      console.log('equipo nombre:', getEquipoNombre(equipo));
       const response = await axios.post(`${VITE_BACKEND_URL}/partida`, {
         equipo: getEquipoNombre(equipo),
         userId,
         estado
       });
-      console.log('Partida creada:', response.data);
       navigate("/comenzarBatalla");
     } catch (error) {
       console.error('Error al crear la partida:', error.response ? error.response.data : error.message);

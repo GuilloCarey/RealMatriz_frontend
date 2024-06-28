@@ -6,10 +6,11 @@ import Recursos from './Recursos/Recursos';
 import Tablero_Recursos from './Tablero_Recursos/Tablero_Recursos';
 import NavBar from '../common/NavBar/NavBar';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import VITE_BACKEND_URL from '../config';
 
 function GameView() {
+  const navigate = useNavigate();
   const { partidaId } = useParams();
   const [infoPartidaContent, setInfoPartidaContent] = useState([]);
   const [logJugadasContent, setLogJugadasContent] = useState([]);
@@ -32,13 +33,27 @@ function GameView() {
   const [errorMessage, setErrorMessage] = useState('');
   const [bando, setBando] = useState('');
   const [isUserTurn, setIsUserTurn] = useState(false);
+  const [usuarioId1, setUsuarioId1] = useState(null);
+  const [usuarioId2, setUsuarioId2] = useState(null);
 
   useEffect(() => {
-    console.log('Fetching partida data...');
-    console.log('ID de la partida:', partidaId);
     axios.get(`${VITE_BACKEND_URL}/gameplay/data/${partidaId}`)
       .then((response) => {
-        console.log('Response data:', response.data);
+        console.log('Partida data:', response.data);
+        if (response.data.estado === 'sombra_gano' ) {
+          if (bando === 'Defensores de la Luz') {
+            navigate('/defeat');
+          } else {
+            navigate('/victory');
+          }
+        } else if (response.data.estado === 'luz_gano') {
+          if (bando === 'Defensores de la Luz') {
+            navigate('/victory');
+          }
+          else {
+            navigate('/defeat');
+          }
+        }
         setInfoPartidaContent([response.data]);
         const logs = response.data.logs_batalla || [];
         setLogJugadasContent([logs]);
@@ -48,25 +63,30 @@ function GameView() {
           runas_usuario_1: response.data.runas_usuario_1,
           runas_usuario_2: response.data.runas_usuario_2
         });
-        setBando(response.data.usuario_id_1 === usuarioId ? 'Defensores de la Luz' : 'Seguidores de Sombras');
+
+        setUsuarioId1(response.data.usuario_id_1);
+        setUsuarioId2(response.data.usuario_id_2);
+
+        if (response.data.usuario_id_1 === usuarioId) {
+          setBando(response.data.bando_usuario_1);
+        } else {
+          setBando(response.data.bando_usuario_2);
+        }
         setIsUserTurn(response.data.usuario_turno_actual === usuarioId);
       })
       .catch((error) => {
         console.error('Error fetching partida data:', error);
       });
-  }, [partidaId, usuarioId]);
+  }, [partidaId, usuarioId, navigate, bando]);
 
   const handleTotemSelection = (totem) => {
     if (isUserTurn) {
-      console.log('Tótem seleccionado:', totem);
       setSelectedTotem(totem);
     }
   };
 
   const handleBoardClick = (x, y) => {
     if (isUserTurn && selectedTotem && usuarioId !== null) {
-      console.log(`Totem seleccionado: ${selectedTotem.id}, Coordenadas: (${x}, ${y})`);
-      console.log(`Enviando solicitud POST a ${VITE_BACKEND_URL}/gameplay/update con usuarioId: ${usuarioId}`);
   
       const payload = {
         x,
@@ -77,11 +97,9 @@ function GameView() {
         partidaId: partidaId
       };
   
-      console.log('Payload:', payload);
   
       axios.post(`${VITE_BACKEND_URL}/gameplay/update`, payload)
         .then((response) => {
-          console.log('Respuesta del servidor:', response.data);
           setTablero(JSON.parse(response.data.matriz));
           setSelectedTotem(null);
           setResetSelection(true);
@@ -95,13 +113,10 @@ function GameView() {
             setErrorMessage(error.response.data.error);
           }
         });
-    } else {
-      console.log('No hay totem seleccionado o usuarioId no está definido.');
     }
   };
 
   const rotateCards = useCallback((id) => {
-    console.log(`Rotando cartas, última carta clickeada: ${id}`);
     const newConfigs = [...cartaConfigs];
     const index = newConfigs.findIndex(carta => carta.id === id);
 
@@ -129,7 +144,6 @@ function GameView() {
   }, [cartaConfigs]);
 
   const resetSelectionHandler = useCallback(() => {
-    console.log('Reseteando selección');
     setResetSelection(false);
   }, []);
 
@@ -161,6 +175,8 @@ function GameView() {
           cartaConfigs={cartaConfigs}
           bando={bando} 
           isUserTurn={isUserTurn}
+          usuarioId1={usuarioId1}
+          usuarioId2={usuarioId2}
         />
         {logJugadasContent.map((logs, index) => (
           <InfoPartida key={index} title={`Log de Jugadas ${index + 1}`} content={logs} />

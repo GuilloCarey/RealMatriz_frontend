@@ -1,0 +1,57 @@
+.sobre-nosotros .container {
+  text-align: center;
+  max-width: 60%;
+}
+
+.members {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 90%;
+}
+
+.member {
+  flex: 1 1 30%;
+  max-width: 25%;
+  margin: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.member h3 {
+  color: #333; 
+}
+
+.member p {
+  color: #666; 
+}
+
+.member-foto {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .members {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .member {
+    flex: 1 1 80%;
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .member {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+

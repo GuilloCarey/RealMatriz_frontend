@@ -12,6 +12,7 @@ import Historial from "../game/Landing_page/Historial/historial";
 import Ranking from "../game/Landing_page/Ranking/ranking";
 import Historia from "../game/Landing_page/Acerca del juego/historia"
 import Perfil from "../game/Perfil/Perfil";
+import SobreNosotros from "../game/Landing_page/Acerca del juego/nosotros";
 
 function Routing() {
   return (
@@ -32,6 +33,7 @@ function Routing() {
           <Route path="/historia" element={<Historia />} />
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/landing_page" element={<LandingPage />} />
+          <Route path="/sobre_nosotros" element={<SobreNosotros />} />
         </Routes>
       </BrowserRouter>
     </>

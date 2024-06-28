@@ -1,15 +1,6 @@
 import React from 'react';
 import './Tablero.css';
 
-//import img1 from '../../assets/personajes/1_luz.jpg';
-//import img2 from '../../assets/personajes/2_luz.jpg';
-//import img3 from '../../assets/personajes/3_luz.jpg';
-//import img4 from '../../assets/personajes/4_luz.jpg';
-//import img5 from '../../assets/personajes/1_sombra.jpg';
-//import img6 from '../../assets/personajes/2_sombra.jpg';
-//import img7 from '../../assets/personajes/3_sombra.jpg';
-//import img8 from '../../assets/personajes/4_sombra.jpg';
-
 const img1 = '/assets/personajes/1_luz.jpg';
 const img2 = '/assets/personajes/2_luz.jpg';
 const img3 = '/assets/personajes/3_luz.jpg';
@@ -33,7 +24,6 @@ const imageMap = {
 function Tablero({ tablero, onBoardClick, bando }) {
   const handleCellClick = (x, y) => {
     if (onBoardClick) {
-      console.log(`Celda (${x}, ${y}) clickeada`);
       onBoardClick(x, y);
     }
   };

@@ -29,10 +29,7 @@ const Auth = () => {
         e.preventDefault();
 
         try {
-            console.log('Signup data:', signupData);
-            console.log('VITE_BACKEND_URL:', VITE_BACKEND_URL);
             const response = await axios.post(`${VITE_BACKEND_URL}/auth/signup`, signupData);
-            console.log('Signup successful:', response.data);
 
             const { token, id, nombre, email } = response.data;
             localStorage.setItem('token', token);
@@ -54,12 +51,8 @@ const Auth = () => {
     
         try {
             const response = await axios.post(`${VITE_BACKEND_URL}/auth/login`, loginData);
-            console.log('Login successful:', response.data);
             
             const { id, nombre, email } = response.data;
-            console.log('id:', id);
-            console.log('nombre:', nombre);
-            console.log('email:', email);
             localStorage.setItem('userId', id);
             localStorage.setItem('userName', nombre);
             localStorage.setItem('userEmail', email);
