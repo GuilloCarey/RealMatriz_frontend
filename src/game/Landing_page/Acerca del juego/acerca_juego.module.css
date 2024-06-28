@@ -1,0 +1,79 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.AcercaDelJuego body {
+    background: url('../../../assets/Marco_info.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.AcercaDelJuego header {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.AcercaDelJuego nav ul {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.AcercaDelJuego nav .nav-center {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.AcercaDelJuego nav ul li {
+    list-style: none;
+    padding: 10px 20px;
+}
+
+.AcercaDelJuego .back-button {
+    margin-right: auto;
+}
+
+.AcercaDelJuego nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.AcercaDelJuego .container {
+    text-align: center;
+    padding: 20px;
+    margin-top: -30px; /* Ajuste para que el contenido no quede detrás del navbar */
+    width: 60%; /* Limitar el ancho del contenedor */
+    max-width: 800px; /* Un máximo para evitar que sea demasiado grande en pantallas grandes */
+    box-sizing: border-box; /* Asegura que el padding y border estén incluidos en el ancho */
+}
+
+.AcercaDelJuego .buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 2px solid white;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: #ffffff;
+    margin: 10px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.AcercaDelJuego .buttons button:hover {
+    background-color: #7FFF00;
+    transform: scale(1.1);
+}

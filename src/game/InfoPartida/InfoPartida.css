@@ -1,0 +1,33 @@
+/* InfoPartida.css */
+.info-partida {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    width: 100%; 
+    height: 100%; 
+    background-image: url('../../assets/Marco_info.png'); /* Ruta imagen */
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+    background-position: center; 
+    position: relative;
+    overflow: hidden; 
+}
+
+.info-partida h3 {
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    color: white; /* Ajusta el color según tu diseño */
+}
+
+.info-partida-content {
+    color: white; 
+    font-size: 16px; 
+    text-align: center; 
+    overflow-y: auto; 
+    width: 70%; 
+    height: 40%; /* Ajusta la altura según tu diseño */
+    padding: 10px; 
+    box-sizing: border-box; 
+}

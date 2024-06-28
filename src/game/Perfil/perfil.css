@@ -1,0 +1,45 @@
+
+/* Título principal del perfil */
+.perfil-title {
+    font-size: 2.5rem;
+    background-color: #570d5a;
+    color: #dddddd;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Tarjeta del perfil */
+.perfil-card {
+    background-color: rgb(238, 202, 202);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Subtítulo de la tarjeta del perfil */
+.perfil-subtitle {
+    font-size: 1.5rem;
+    color: #555;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Lista de información del perfil */
+.perfil-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Elementos de la lista del perfil */
+.perfil-list li {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Negrita para los títulos de los elementos de la lista */
+.perfil-list li strong {
+    color: #333;
+}

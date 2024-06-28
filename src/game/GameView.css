@@ -1,0 +1,53 @@
+.game-view {
+  display: grid;
+  grid-template-rows: auto 60% 30%;
+  height: 800px;
+  width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navbar{
+  grid-row: 1 / 2;
+}
+
+.fila-superior {
+  display: grid;
+  grid-template-columns: 180px 840px 180px;
+  height: 100%;
+  width: 1200px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.fila-inferior {
+  display: grid;
+  grid-template-columns: 300px 600px 300px;
+  height: 100%;
+  width: 1200px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.fila-superior > *,
+.fila-inferior > * {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.tablero-container {
+  position: relative;
+}
+
+.error-message {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(21, 16, 16, 0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 10;
+}

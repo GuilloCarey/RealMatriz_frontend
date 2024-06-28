@@ -1,0 +1,62 @@
+.victory-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #155724; 
+    text-align: center;
+  }
+  
+  .victory-page h1 {
+    font-size: 7em;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 160px;
+    background-color: #28a745;
+    color: black;
+    padding: 40px;
+    border-radius: 20px;
+  }
+  
+  .victory-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px; 
+    height: 200px; 
+    margin: 20px 0;
+    background-color: #d4edda; 
+    border: 2px solid #155724; 
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .victory-player h2 {
+    margin: 0;
+    font-size: 2em;
+  }
+  
+  .victory-player p {
+    margin: 10px 0 0;
+    font-size: 1.5em;
+    color: #155724;
+  }
+  
+  .button-link {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: white;
+    background-color: #28a745; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none; 
+  }
+  
+  .button-link:hover {
+    background-color: #218838; 
+  }
+  

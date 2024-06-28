@@ -1,0 +1,97 @@
+.comenzar-boton {
+  flex: 1;
+  text-align: center;
+  padding-top: 40px;
+  padding-right: 20px;
+}
+
+.comenzar-boton button {
+  padding: 50px 200px; 
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  border-radius: 25px;
+  height: 90px;
+  background-color: #9e2bdc;
+  color: white;
+}
+
+.comenzar-boton button:hover {
+  background-color: #b30042;
+}
+
+.partidas-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #9e2bdc; 
+  border-radius: 25px; 
+  margin: 20px 0;
+}
+
+.tus-partidas, .unirte-partidas {
+  width: 45%;
+}
+
+.tus-partidas ul, .unirte-partidas ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.tus-partidas li, .unirte-partidas li {
+  margin: 10px 0;
+}
+
+.tus-partidas button, .unirte-partidas button {
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+}
+
+.tus-partidas button:hover, .unirte-partidas button:hover {
+  background-color: #0056b3;
+}
+
+.en-curso {
+  font-size: 1.5em;
+  background-color: rgb(172, 108, 180); 
+  border: 2px solid black; 
+  font-weight: 800;
+  color: #000000;
+  margin: 0.5em 0;
+}
+
+.partida-boton {
+  padding: 10px;
+  font-size: 16px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.partida-boton.no-turno {
+  background-color: red;
+  color: white;
+}
+
+.partida-boton.esperando-rival {
+  background-color: orange;
+  color: white;
+}
+
+.partida-boton.tu-turno {
+  background-color: rgb(7, 165, 7);
+  color: white;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}

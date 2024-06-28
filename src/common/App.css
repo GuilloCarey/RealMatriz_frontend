@@ -1,0 +1,84 @@
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0; /* 2rem */
+  text-align: center;
+}
+.navbar {
+  width: 100%;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #0510e0aa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #787978aa);
+}
+.mainButton {
+  padding: 20px 40px;
+  font-size: 20px;
+  cursor: pointer;
+  border: 2px solid white;
+  border-radius: 5px;
+  background-color: #28a745;
+  color: #ffffff;
+  transition: background-color 0.3s, transform 0.2s;
+  margin-bottom: 20px; /* Espacio debajo del botón */
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card {
+  padding: 2em;
+}
+ .text {
+  font-size: 1.5em;
+  background-color: rgb(105, 39, 114); /* Establece un color de fondo para que el borde siempre sea visible */
+  border: 2px solid black; /* Ajusta el grosor y color del borde según sea necesario */
+  font-weight: 500;
+  color: #000000;
+  margin: 0.5em 0;
+}
+
+.outlined {
+  color: #000000;
+  border: 2px solid black; /* Ajusta el grosor y color del borde según sea necesario */
+  padding: 5px; /* Ajusta el espacio alrededor del texto según sea necesario */
+  display: inline-block; /* Asegura que el borde se ajuste al texto */
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(221, 221, 221); /* Establece un color de fondo para que el borde siempre sea visible */
+}
+
+.outlined:hover {
+  background-color: rgb(151, 54, 54); /* Cambia el color de fondo cuando se pasa el ratón por encima */
+}
